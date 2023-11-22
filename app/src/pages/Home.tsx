@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { Column } from "../components/Column";
 import { Link } from "react-router-dom";
+import { Hero } from "../components/Hero";
+import { Stack } from "../components/Stack";
 
 export class Home extends Component {
 
@@ -8,12 +9,13 @@ export class Home extends Component {
 
         return (
             <main>
-                <Column>
+                <Hero />
+                <Stack direction="column">
                     <header>
                         Header
                     </header>
-                    <Link to='pageEditor'>Editor</Link>
-                </Column>
+                    <Link to='about'>Editor</Link>
+                </Stack>
             </main>
         )
     }

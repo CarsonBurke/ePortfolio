@@ -1,11 +1,12 @@
 import React, { Component, useEffect } from 'react';
 import { Home } from './pages/Home';
 import './styles/main.css'
-import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom';
-import { PageEditor } from './pages/editor/PageEditor';
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, useLocation } from 'react-router-dom';
 import { initLoad } from './scripts/init';
 import { Error } from './pages/Error';
 import { main } from './scripts/main';
+import { About } from './pages/About';
+import { Navbar } from './components/Navbar';
 
 main()
 
@@ -18,7 +19,26 @@ export default class App extends Component {
   render() { 
     return (
       <div className="app" id='app'>
-        <RouterProvider router={customRouter}/>
+        <BrowserRouter basename='/'>
+          <Navbar />
+          <Routes>
+
+            <Route 
+              path="/" 
+              element={<Home />} 
+              loader={loader}/>
+            <Route 
+                path="/about" 
+                element={<About />} 
+                loader={loader}/>
+            <Route 
+                path="/works" 
+                element={<Home />} 
+                loader={loader}/>
+
+          </Routes>  
+        </BrowserRouter>
+        {/* <RouterProvider router={customRouter}/> */}
 
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -54,9 +74,20 @@ const customRouter = createBrowserRouter([
       ErrorBoundary: Error,
   },
   {
-      path: 'pageEditor',
-      element: <PageEditor />,
+      path: 'about',
+      element: <About />,
       loader,
       ErrorBoundary: Error,
   },
+  {
+    path: '/',
+    element: <Navbar />,
+    loader,
+    ErrorBoundary: Error,
+    children: [
+      {
+        
+      }
+    ]
+  }
 ])

@@ -1,6 +1,7 @@
 import { type } from "os"
-import { Row } from "./Row"
 import { Link, NavLink } from "react-router-dom"
+import { Stack } from "./Stack"
+import { Component } from "react"
 
 export const title = 'Novara'
 
@@ -18,7 +19,7 @@ const navbarLinks: NavbarLink[] = [
     }
 ]
 
-export class Navbar {
+export class Navbar extends Component {
 
     private constructNavbarLinks() {
 
@@ -39,14 +40,14 @@ export class Navbar {
 
         return (
             <nav className="navbarContainer" id="navbarContainer">
-                <Row>
-                    <Row>
+                <Stack className="navbarParent">
+                    <Stack>
 
-                    </Row>
-                    <Row>
+                    </Stack>
+                    <Stack>
                         {this.constructNavbarLinks()}
-                    </Row>
-                </Row>
+                    </Stack>
+                </Stack>
             </nav>
         )
     }
