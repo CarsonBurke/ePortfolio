@@ -1,6 +1,12 @@
 .navbarParent {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     height: 55px;
     padding: 0 5%;
+}
+
+.navbarLink {
+    height: 100%;
 }

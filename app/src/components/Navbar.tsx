@@ -2,8 +2,9 @@ import { type } from "os"
 import { Link, NavLink } from "react-router-dom"
 import { Stack } from "./Stack"
 import { Component } from "react"
-
-export const title = 'Novara'
+import './navbar.css'
+import { title } from "../scripts/config"
+import { Header } from "./text/Header"
 
 interface NavbarLink {
     type: 'text' | 'button' | 'coloredButton'
@@ -28,7 +29,7 @@ export class Navbar extends Component {
         for (const link of navbarLinks) {
 
             elements.push(
-                <NavLink to={link.to}>{link.text}</NavLink>
+                <NavLink className={'navbarLink'} to={link.to}>{link.text}</NavLink>
             )
         }
 
@@ -40,11 +41,12 @@ export class Navbar extends Component {
 
         return (
             <nav className="navbarContainer" id="navbarContainer">
-                <Stack className="navbarParent">
+                <Stack className="navbarParent secondaryBG" centerVerticalContent="space-between" centerHorizontalContent="center">
                     <Stack>
-
+                        <img src="images/logo.png" alt="hi"/>
+                        <Header type="h3"><h1>{title}</h1></Header>
                     </Stack>
-                    <Stack>
+                    <Stack centerHorizontalContent="center" centerVerticalItems="center">
                         {this.constructNavbarLinks()}
                     </Stack>
                 </Stack>

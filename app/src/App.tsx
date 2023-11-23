@@ -7,6 +7,8 @@ import { Error } from './pages/Error';
 import { main } from './scripts/main';
 import { About } from './pages/About';
 import { Navbar } from './components/Navbar';
+import { Loader } from './components/Loader';
+import { Footer } from './components/Footer';
 
 main()
 
@@ -26,17 +28,18 @@ export default class App extends Component {
             <Route 
               path="/" 
               element={<Home />} 
-              loader={loader}/>
+              loader={Loader}/>
             <Route 
                 path="/about" 
                 element={<About />} 
-                loader={loader}/>
+                loader={Loader}/>
             <Route 
                 path="/works" 
                 element={<Home />} 
-                loader={loader}/>
+                loader={Loader}/>
 
           </Routes>  
+          <Footer />
         </BrowserRouter>
         {/* <RouterProvider router={customRouter}/> */}
 
@@ -59,13 +62,7 @@ export default class App extends Component {
   }
 }
 
-function loader() {
-
-  return (
-      <div></div>
-  )
-}
-
+/* 
 const customRouter = createBrowserRouter([
   {
       path: '/',
@@ -90,4 +87,4 @@ const customRouter = createBrowserRouter([
       }
     ]
   }
-])
+]) */

@@ -1,0 +1,7 @@
+.stackCollapseToRow {
+    flex-direction: row;
+}
+
+.stackCollapseToColumn {
+    flex-direction: column;
+}

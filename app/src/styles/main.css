@@ -18,6 +18,13 @@
 
 body {
     overflow-x: hidden;
+    --primaryBG: hsl(0, 0%, 100%);
+    --secondaryBG: hsl(0, 0%, 87%);
+    --tertiaryBG: hsl(0, 0%, 79%);
+}
+
+section {
+    padding: 0 5%;
 }
 
 @font-face {
@@ -33,7 +40,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 18px;
-  }
+}
   
 ::-webkit-scrollbar-track {
     background-color: var(--secondary);
@@ -43,10 +50,22 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: var(--primaryHighlight);
     transition: all 0.2s;
-    }
+}
 
 ::-webkit-scrollbar-thumb:hover {
     box-shadow: inset var(--primaryHighlightOffset) 0 0 0 1000px;  
 }
 
 /* Main */
+
+.primaryBG {
+    background: var(--primaryBG);
+}
+
+.secondaryBG {
+    background: var(--secondaryBG);
+}
+
+.tertiaryBG {
+    background: var(--tertiaryBG);
+}

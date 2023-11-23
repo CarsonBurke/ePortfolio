@@ -1,4 +1,6 @@
 import { CSSProperties, Component } from "react"
+import { Property } from 'csstype'
+import './stack.css'
 
 interface StackArgs {
     className?: string
@@ -9,9 +11,17 @@ interface StackArgs {
     children: React.JSX.Element | React.JSX.Element[]
     gap?: string
     height?: string
-    centerVertical?: AlignSetting
-    centerHorizontal?: AlignSetting
+    centerHorizontalContent?: Property.JustifyContent
+    centerVerticalContent?: Property.JustifyContent
+    centerHorizontalItems?: Property.JustifyItems
+    centerVerticalItems?: Property.JustifyItems
     collapseAtWidth?: string
+    debug?: string
+}
+
+const flexDirectionInverse = {
+    column: 'row',
+    row: 'column'
 }
 
 export class Stack extends Component<StackArgs> {
@@ -27,19 +37,28 @@ export class Stack extends Component<StackArgs> {
 
         if (this.props.direction === 'column') {
 
-            style.justifyContent = this.props.centerVertical
-            style.alignItems = this.props.centerHorizontal 
+            style.justifyContent = this.props.centerHorizontalContent
+            style.alignContent = this.props.centerVerticalContent
+            style.justifyItems = this.props.centerHorizontalItems
+            style.alignItems = this.props.centerVerticalItems
         }
         // default to row
         else {
 
-            style.justifyContent = this.props.centerHorizontal
-            style.alignItems = this.props.centerVertical 
+            style.justifyContent = this.props.centerVerticalContent
+            style.alignContent = this.props.centerHorizontalContent 
+            style.justifyItems = this.props.centerVerticalItems
+            style.alignItems = this.props.centerHorizontalItems
+        }
+
+        if (this.props.debug) {
+
+            console.log(style)
         }
 
         return (
             <>
-                <div className={'stack' + this.props.className} style={style}>
+                <div className={`stack ${this.props.className} [@media(min-width:${this.props.collapseAtWidth})]:stackCollapseToColumn`} style={style}>
                     {this.props.children}
                 </div>
             </>
