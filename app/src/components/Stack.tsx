@@ -3,18 +3,21 @@ import { Property } from 'csstype'
 import './stack.css'
 
 interface StackArgs {
+    children: React.JSX.Element | React.JSX.Element[]
     className?: string
     /**
      * The direction content is layed out. Defaults to horizontal
      */
     direction?: 'row' | 'column'
-    children: React.JSX.Element | React.JSX.Element[]
     gap?: string
+    width?: string
+    maxWidth?: string
     height?: string
-    centerHorizontalContent?: Property.JustifyContent
-    centerVerticalContent?: Property.JustifyContent
-    centerHorizontalItems?: Property.JustifyItems
-    centerVerticalItems?: Property.JustifyItems
+    maxHeight?: string
+    alignHorizontalContent?: Property.JustifyContent
+    alignVerticalContent?: Property.JustifyContent
+    alignHorizontalItems?: Property.JustifyItems
+    alignVerticalItems?: Property.JustifyItems
     collapseAtWidth?: string
     debug?: string
 }
@@ -32,23 +35,26 @@ export class Stack extends Component<StackArgs> {
             display: 'flex', 
             flexDirection: this.props.direction,
             gap: this.props.gap, 
-            height: this.props.height
+            width: this.props.width,
+            maxWidth: this.props.maxWidth,
+            height: this.props.height,
+            maxHeight: this.props.maxHeight,
         }
 
         if (this.props.direction === 'column') {
 
-            style.justifyContent = this.props.centerHorizontalContent
-            style.alignContent = this.props.centerVerticalContent
-            style.justifyItems = this.props.centerVerticalItems
-            style.alignItems = this.props.centerHorizontalItems
+            style.justifyContent = this.props.alignHorizontalContent
+            style.alignContent = this.props.alignVerticalContent
+            style.justifyItems = this.props.alignVerticalItems
+            style.alignItems = this.props.alignHorizontalItems
         }
         // default to row
         else {
 
-            style.justifyContent = this.props.centerHorizontalContent
-            style.alignContent = this.props.centerVerticalContent 
-            style.justifyItems = this.props.centerHorizontalItems
-            style.alignItems = this.props.centerVerticalItems
+            style.justifyContent = this.props.alignHorizontalContent
+            style.alignContent = this.props.alignVerticalContent 
+            style.justifyItems = this.props.alignHorizontalItems
+            style.alignItems = this.props.alignVerticalItems
         }
 
         if (this.props.debug) {
@@ -58,7 +64,7 @@ export class Stack extends Component<StackArgs> {
 
         return (
             <>
-                <div className={`stack ${this.props.className} [@media(min-width:${this.props.collapseAtWidth})]:stackCollapseToColumn`} style={style}>
+                <div className={`stack ${this.props.className} [@media(min-width:${this.props.collapseAtWidth})]:column`} style={style}>
                     {this.props.children}
                 </div>
             </>

@@ -36,10 +36,12 @@ export class Navbar extends Component {
 
         const elements: React.JSX.Element[] = []
 
-        for (const link of navbarLinks) {
+        for (let i = 0; i < navbarLinks.length; i++) {
+
+            const link = navbarLinks[i]
 
             elements.push(
-                <NavLink className={'navbarLink'} to={link.to}>{link.text}</NavLink>
+                <Header key={i} type="h6" className={'navbarLink'}><NavLink key={i} to={link.to}>{link.text}</NavLink></Header>
             )
         }
 
@@ -51,23 +53,19 @@ export class Navbar extends Component {
 
         return (
             <nav className="navbarContainer" id="navbarContainer">
-                <Stack className="navbarParent primaryBG" centerHorizontalContent="space-between">
-                    <Stack centerVerticalItems="center" gap="10px">
-                        <img className="navbarIcon" src="images/carsonIcon.png" alt="hi"/>
-                        <Header type="h3"><h1>{title}</h1></Header>
-                    </Stack>
-                    <Stack centerVerticalItems="center">
+                <Stack className="navbarParent primaryBG" alignHorizontalContent="space-between">
+                    <Link to={'/'}>
+                        <Stack alignVerticalItems="center" gap="10px" height="100%">
+                        
+                            <img className="navbarIcon" src="images/carsonIcon.png" alt="carson icon"/>
+                            {/* <Header type="h3"><h1>{title}</h1></Header> */}
+                        </Stack>
+                    </Link>
+                    <Stack alignVerticalItems="center">
                         {this.constructNavbarLinks()}
                     </Stack>
                 </Stack>
             </nav>
         )
     }
-}
-
-export function navbarInit() {
-
-    const navbarContainer = document.getElementById('navbarContainer')
-
-    window.addEventListener('resize', () => {})
 }

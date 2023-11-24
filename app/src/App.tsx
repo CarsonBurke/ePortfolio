@@ -2,6 +2,8 @@ import React, { Component, useEffect, useState } from 'react';
 import { Home } from './pages/Home';
 import './styles/main.css'
 import './styles/colors.css'
+import './styles/sizing.css'
+import './styles/interactible.css'
 import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, useLocation } from 'react-router-dom';
 import { initLoad } from './scripts/init';
 import { Error } from './pages/Error';
@@ -54,41 +56,31 @@ export default class App extends Component<AppArgs> {
               element={<Home setAppState={this.setState} />} 
               loader={Loader}/>
             <Route 
-                path="/About" 
+                path="/about" 
                 element={<About setAppState={this.setState} />} 
                 loader={Loader}/>
             <Route 
-                path="/Works" 
+                path="/works" 
                 element={<MyWork setAppState={this.setState} />} 
                 loader={Loader}/>
             <Route 
-                path="/WorkExample" 
-                element={<Work setAppState={this.setState} title='Title' description='description' />} 
+                path="/workExample" 
+                element={<Work setAppState={this.setState} title='Title' description='description' category='article' summary='In this article I will discuss the pros and cons of continueing research into fission bombs, specifically in regards to hydrogen bombs, which seems to be where the future (or rather, continuation) of atomic bombs.' />} 
                 loader={Loader}/>
             <Route 
-                path="/Testing" 
+              path="/work/:id" 
+              element={<Work setAppState={this.setState} title='Title' description='description' category='article' summary='In this article I will discuss the pros and cons of continueing research into fission bombs, specifically in regards to hydrogen bombs, which seems to be where the future (or rather, continuation) of atomic bombs.' />} 
+              loader={Loader}/>
+            <Route 
+                path="/testing" 
                 element={<Testing setAppState={this.setState} />} 
                 loader={Loader}/>
 
+            <Route path='*' element={<Error setAppState={this.setState} errorCode={404} />} loader={Loader} />
           </Routes>  
           {this.state.enableFooter && <Footer />}
         </BrowserRouter>
         {/* <RouterProvider router={customRouter}/> */}
-
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
       </div>
     )
   }

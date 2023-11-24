@@ -5,3 +5,23 @@
 .secondaryText {
     color: var(--secondaryText);
 }
+
+.whiteText {
+    color: white;
+}
+
+.primaryBG {
+    background: var(--primaryBG);
+}
+
+.secondaryBG {
+    background: var(--secondaryBG);
+}
+
+.tertiaryBG {
+    background: var(--tertiaryBG);
+}
+
+.primaryHighlightBG {
+    background: var(--primaryHighlight);
+}

@@ -5,13 +5,13 @@ import { PageSettings } from "../types/pageSettings";
 export class MyWork extends Component<PageSettings> {
     render() {
         return (
-            <main>
-
-                <Header type="h1"><h1>My Work</h1></Header>
-
-                <div>
-
-                </div>
+            <main className="topOffsetForNavbar">
+                <section>
+                    <Header type="h1" textAlign="center"><h1>My Work</h1></Header>
+                </section>
+                <section>
+                    
+                </section>
             </main>
         )
     }

@@ -12,8 +12,10 @@ export class Testing extends Component<PageSettings> {
 
     render() {
         return (
-            <main>
-                <Header type="h1"><h1>Testing</h1></Header>
+            <main className="topOffsetForNavbar">
+                <section>
+                    <Header type="h1"><h1>Testing</h1></Header>
+                </section>
             </main>
         )
     }

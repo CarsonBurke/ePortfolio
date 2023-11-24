@@ -1,10 +1,18 @@
 import { Component } from "react";
+import { Stack } from "./Stack";
 
-export class Section extends Component{
+interface SectionArgs {
+    container?: string
+}
+
+export class Section extends Stack {
     render() {
+
+        
+
         return (
             <section>
-                
+                {this.props.children}
             </section>
         )
     }

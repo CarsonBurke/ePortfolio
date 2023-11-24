@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 * {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;    
+    font-family: 'Outfit', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-decoration: none;
@@ -14,35 +15,42 @@
     box-sizing: border-box;
     outline: none;
     border: none;
+    /* Variables */
+    --navbarHeight: 55px;
+    --primaryHighlight: hsl(287, 100%, 37%);
+    --primaryHighlightActive: hsl(287, 100%, 29%);
+    --defaultTransitionTime: 0.3s;
+    --defaultBorderRadius: 6px;
 }
 
 body {
     overflow-x: hidden;
 }
 
+main {
+    min-height: 100vh;
+}
+
 section {
-    padding: 0 5%;
+    padding: 30px 5%;
 }
 
 .lightTheme {
-    --primaryHighlight: hsl(287, 100%, 37%);
-    --primaryHighlightActive: hsl(287, 100%, 29%);
     --primaryBG: hsl(0, 0%, 100%);
-    --secondaryBG: hsl(0, 0%, 87%);
-    --tertiaryBG: hsl(0, 0%, 79%);
+    --secondaryBG: hsl(0, 0%, 90%);
+    --tertiaryBG: hsl(0, 0%, 80%);
     --primaryText: black;
     --secondaryText: white;
 }
 
 .darkTheme {
-    --primaryHighlight: hsl(287, 100%, 37%);
-    --primaryHighlightActive: hsl(287, 100%, 29%);
     --primaryBG: hsl(0, 0%, 10%);
     --secondaryBG: hsl(0, 0%, 15%);
     --tertiaryBG: hsl(0, 0%, 24%);
     --primaryText: black;
     --secondaryText: white;
 }
+
 
 @font-face {
     font-family: "Material Icons";
@@ -74,14 +82,10 @@ section {
 
 /* Main */
 
-.primaryBG {
-    background: var(--primaryBG);
+.topOffsetForNavbar {
+    padding-top: var(--navbarHeight);
 }
 
-.secondaryBG {
-    background: var(--secondaryBG);
-}
-
-.tertiaryBG {
-    background: var(--tertiaryBG);
+.defaultTransition {
+    transition: all 0.3s;
 }

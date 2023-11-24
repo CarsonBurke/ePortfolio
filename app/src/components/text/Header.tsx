@@ -2,6 +2,10 @@ import { CSSProperties, Component, ReactNode } from "react";
 import { currentTheme, themes } from "../../scripts/config";
 
 const headerTypes = {
+    title: {
+        size: '52px',
+        weight: 700,
+    },
     h1: {
         size: '42px',
         weight: '700',
@@ -19,11 +23,11 @@ const headerTypes = {
         weight: '500',
     },
     h5: {
-        size: '24px',
+        size: '23px',
         weight: '500',
     },
     h6: {
-        size: '20px',
+        size: '19px',
         weight: '500',
     },
     h7: {
@@ -37,7 +41,8 @@ const headerTypes = {
 }
 
 interface HeaderArgs {
-    children: React.JSX.Element | React.JSX.Element[]
+    children: React.JSX.Element | React.JSX.Element[] | string
+    className?: string
     type: keyof typeof headerTypes
     textAlign?: 'left' | 'center' | 'right'
     theme?: 'primary' | 'secondary'
@@ -56,7 +61,7 @@ export class Header extends Component<HeaderArgs> {
         if (this.props.theme) styles.color = themes[currentTheme].text[this.props.theme]
 
         return (
-            <div style={styles}>
+            <div style={styles} className={this.props.className}>
                 {this.props.children}
             </div> 
         )

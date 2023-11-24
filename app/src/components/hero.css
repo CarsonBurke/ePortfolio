@@ -1,10 +1,14 @@
 .heroContainer {
-    background-position: center;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.heroParent {
+    padding: var(--navbarHeight) 0;
+    height: calc(100vh);
 }
 
 .heroImage {
     max-width: 80%;
     max-height: 60vh;
-}
+} 
