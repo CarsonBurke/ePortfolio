@@ -1,6 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Home } from './pages/Home';
 import './styles/main.css'
+import './styles/colors.css'
 import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, useLocation } from 'react-router-dom';
 import { initLoad } from './scripts/init';
 import { Error } from './pages/Error';
@@ -9,10 +10,33 @@ import { About } from './pages/About';
 import { Navbar } from './components/Navbar';
 import { Loader } from './components/Loader';
 import { Footer } from './components/Footer';
+import { Testing } from './pages/Testing';
+import { MyWork } from './pages/MyWork';
+import { Work } from './pages/Work';
 
 main()
 
-export default class App extends Component {
+interface AppState {
+  enableNavbar: boolean
+  enableFooter: boolean
+}
+
+interface AppArgs {
+
+}
+
+export default class App extends Component<AppArgs> {
+  state: Readonly<AppState>;
+
+  constructor(args: AppArgs) {
+    super(args)
+
+    this.state = {
+      enableNavbar: true,
+      enableFooter: true,
+    }
+    this.setState = this.setState.bind(this)
+  }
 
   componentDidMount(): void {
       initLoad()
@@ -20,26 +44,34 @@ export default class App extends Component {
 
   render() { 
     return (
-      <div className="app" id='app'>
+      <div className="app lightTheme" id='app'>
         <BrowserRouter basename='/'>
-          <Navbar />
+          { this.state.enableNavbar && <Navbar />}
           <Routes>
 
             <Route 
               path="/" 
-              element={<Home />} 
+              element={<Home setAppState={this.setState} />} 
               loader={Loader}/>
             <Route 
-                path="/about" 
-                element={<About />} 
+                path="/About" 
+                element={<About setAppState={this.setState} />} 
                 loader={Loader}/>
             <Route 
-                path="/works" 
-                element={<Home />} 
+                path="/Works" 
+                element={<MyWork setAppState={this.setState} />} 
+                loader={Loader}/>
+            <Route 
+                path="/WorkExample" 
+                element={<Work setAppState={this.setState} title='Title' description='description' />} 
+                loader={Loader}/>
+            <Route 
+                path="/Testing" 
+                element={<Testing setAppState={this.setState} />} 
                 loader={Loader}/>
 
           </Routes>  
-          <Footer />
+          {this.state.enableFooter && <Footer />}
         </BrowserRouter>
         {/* <RouterProvider router={customRouter}/> */}
 

@@ -18,13 +18,30 @@
 
 body {
     overflow-x: hidden;
-    --primaryBG: hsl(0, 0%, 100%);
-    --secondaryBG: hsl(0, 0%, 87%);
-    --tertiaryBG: hsl(0, 0%, 79%);
 }
 
 section {
     padding: 0 5%;
+}
+
+.lightTheme {
+    --primaryHighlight: hsl(287, 100%, 37%);
+    --primaryHighlightActive: hsl(287, 100%, 29%);
+    --primaryBG: hsl(0, 0%, 100%);
+    --secondaryBG: hsl(0, 0%, 87%);
+    --tertiaryBG: hsl(0, 0%, 79%);
+    --primaryText: black;
+    --secondaryText: white;
+}
+
+.darkTheme {
+    --primaryHighlight: hsl(287, 100%, 37%);
+    --primaryHighlightActive: hsl(287, 100%, 29%);
+    --primaryBG: hsl(0, 0%, 10%);
+    --secondaryBG: hsl(0, 0%, 15%);
+    --tertiaryBG: hsl(0, 0%, 24%);
+    --primaryText: black;
+    --secondaryText: white;
 }
 
 @font-face {
@@ -43,8 +60,7 @@ section {
 }
   
 ::-webkit-scrollbar-track {
-    background-color: var(--secondary);
-    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 1000px;
+    background-color: var(--secondaryBG);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -53,7 +69,7 @@ section {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    box-shadow: inset var(--primaryHighlightOffset) 0 0 0 1000px;  
+    box-shadow: inset var(--primaryHighlightActive) 0 0 0 1000px;  
 }
 
 /* Main */

@@ -3,10 +3,24 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 55px;
+    --navbarHeight: 55px;
+    height: var(--navbarHeight);
+    line-height: var(--navbarHeight);
     padding: 0 5%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 12px;
+}
+
+.navbarIcon {
+    height: 45px;
 }
 
 .navbarLink {
     height: 100%;
+    transition: all 0.3s;
+    padding: 0 10px;
+}
+
+.navbarLink:hover {
+    border-bottom: 4px solid var(--primaryHighlight);
+    background: var(--secondaryBG);
 }

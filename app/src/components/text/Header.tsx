@@ -1,4 +1,5 @@
-import { Component, ReactNode } from "react";
+import { CSSProperties, Component, ReactNode } from "react";
+import { currentTheme, themes } from "../../scripts/config";
 
 const headerTypes = {
     h1: {
@@ -39,6 +40,7 @@ interface HeaderArgs {
     children: React.JSX.Element | React.JSX.Element[]
     type: keyof typeof headerTypes
     textAlign?: 'left' | 'center' | 'right'
+    theme?: 'primary' | 'secondary'
 }
 
 export class Header extends Component<HeaderArgs> {
@@ -46,9 +48,15 @@ export class Header extends Component<HeaderArgs> {
     render() {
 
         const headerType = headerTypes[this.props.type]
+        const styles: CSSProperties = {
+            fontSize: headerType.size, 
+            fontWeight: headerType.weight
+        }
+        styles.textAlign = this.props.textAlign
+        if (this.props.theme) styles.color = themes[currentTheme].text[this.props.theme]
 
         return (
-            <div style={{fontSize: headerType.size, fontWeight: headerType.weight, textAlign: this.props.textAlign }}>
+            <div style={styles}>
                 {this.props.children}
             </div> 
         )

@@ -4,8 +4,9 @@ class Unveiler {
     
     init() {
 
-        window.addEventListener('load', this.animateElements)
-        window.addEventListener('scroll', this.animateElements)
+        window.addEventListener('load', () => this.animateElements())
+        window.addEventListener('scroll', () => this.animateElements())
+        window.addEventListener('resize', () => this.animateElements())
     }
 
     animateElements() {

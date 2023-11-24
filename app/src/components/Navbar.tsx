@@ -15,9 +15,19 @@ interface NavbarLink {
 const navbarLinks: NavbarLink[] = [
     {
         type: 'text',
-        text: 'home',
+        text: 'Home',
         to: '/',
-    }
+    },
+    {
+        type: 'text',
+        text: 'About Me',
+        to: '/About',
+    },
+    {
+        type: 'text',
+        text: 'My Work',
+        to: '/Works',
+    },
 ]
 
 export class Navbar extends Component {
@@ -41,12 +51,12 @@ export class Navbar extends Component {
 
         return (
             <nav className="navbarContainer" id="navbarContainer">
-                <Stack className="navbarParent secondaryBG" centerVerticalContent="space-between" centerHorizontalContent="center">
-                    <Stack>
-                        <img src="images/logo.png" alt="hi"/>
+                <Stack className="navbarParent primaryBG" centerHorizontalContent="space-between">
+                    <Stack centerVerticalItems="center" gap="10px">
+                        <img className="navbarIcon" src="images/carsonIcon.png" alt="hi"/>
                         <Header type="h3"><h1>{title}</h1></Header>
                     </Stack>
-                    <Stack centerHorizontalContent="center" centerVerticalItems="center">
+                    <Stack centerVerticalItems="center">
                         {this.constructNavbarLinks()}
                     </Stack>
                 </Stack>

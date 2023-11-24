@@ -1,3 +1,9 @@
+.heroContainer {
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .heroImage {
     max-width: 80%;
     max-height: 60vh;

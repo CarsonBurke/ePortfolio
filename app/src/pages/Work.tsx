@@ -1,13 +1,14 @@
 import { Component, ReactNode } from "react";
 import { Header } from "../components/text/Header";
 import { Stack } from "../components/Stack";
+import { PageSettings } from "../types/pageSettings";
 
 interface WorkArgs {
     title: string
     description: string
 }
 
-export class Work extends Component<WorkArgs> {
+export class Work extends Component<PageSettings & WorkArgs> {
     render() {
         return (
             <main>

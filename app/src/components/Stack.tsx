@@ -39,16 +39,16 @@ export class Stack extends Component<StackArgs> {
 
             style.justifyContent = this.props.centerHorizontalContent
             style.alignContent = this.props.centerVerticalContent
-            style.justifyItems = this.props.centerHorizontalItems
-            style.alignItems = this.props.centerVerticalItems
+            style.justifyItems = this.props.centerVerticalItems
+            style.alignItems = this.props.centerHorizontalItems
         }
         // default to row
         else {
 
-            style.justifyContent = this.props.centerVerticalContent
-            style.alignContent = this.props.centerHorizontalContent 
-            style.justifyItems = this.props.centerVerticalItems
-            style.alignItems = this.props.centerHorizontalItems
+            style.justifyContent = this.props.centerHorizontalContent
+            style.alignContent = this.props.centerVerticalContent 
+            style.justifyItems = this.props.centerHorizontalItems
+            style.alignItems = this.props.centerVerticalItems
         }
 
         if (this.props.debug) {
