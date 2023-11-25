@@ -1,8 +1,28 @@
 import './unveiler.css'
 
+type AnimationTypes = 'floatUp' | 'floatDown' | 'floatLeft' | 'floatRight'
+
+
 class Unveiler {
 
-    animations = new Set(['floatUp', 'floatDown', 'floatLeft', 'floatRight'])
+    animations = {
+        floatUp: {
+            xOffset: 0,
+            yOffset: 200,
+        },
+        floatDown: {
+            xOffset: 0,
+            yOffset: -200,
+        },
+        floatLeft: {
+            xOffset: 200,
+            yOffset: 0,
+        },
+        floatRight: {
+            xOffset: -200,
+            yOffset: 0,
+        }
+    }
     
     init() {
 
@@ -34,13 +54,22 @@ class Unveiler {
         
         // Convert to a string, seconds
         el.style.animationDuration = animationDuration + "s"
+
+        let animationType: AnimationTypes
+        el.classList.forEach((key, value) => {
+            if (!this.animations[key as AnimationTypes]) return
+
+            animationType = key as AnimationTypes
+        })
+        const animation = this.animations[animationType]
     
         const elBoundingRect = el.getBoundingClientRect()
-        const elMinTop = Math.min(
+        let elMinTop = Math.min(
             elBoundingRect.top + showValue,
             // around the middle of the element
             elBoundingRect.bottom - el.offsetHeight / 2
         )
+        if (animationType && el.classList.contains('unveilShow')) elMinTop -= animation.yOffset
 
         const overflowTop = Math.min(
             // bottom of the window, up by the show value
@@ -64,48 +93,39 @@ class Unveiler {
             return
         }
  */
+
+        el.dataset.overflowTop = overflowTop.toString()
+        el.dataset.elMinTop = elMinTop.toString()
+
+/* 
         if (overflowTop > elBoundingRect.top &&
             el.classList.contains('unveilShow')) {
             console.log('on')
 
             el.classList.add("unveilShow")
 
-            let animation: string
-
-            el.classList.forEach((key, value) => {
-                if (!this.animations.has(key)) return
-
-                animation = key
-            })
-            console.log(animation)
-            if (!animation) {
+            console.log(animationType)
+            if (!animationType) {
                 el.style.animationName = 'still'
                 return
             }
 
-            el.style.animationName = animation
+            el.style.animationName = animationType
             return
         }
-
+ */
         if (overflowTop > elMinTop) {
             console.log('on', elMinTop, overflowTop)
 
             el.classList.add("unveilShow")
 
-            let animation: string
-
-            el.classList.forEach((key, value) => {
-                if (!this.animations.has(key)) return
-
-                animation = key
-            })
-            console.log(animation)
-            if (!animation) {
+            console.log(animationType)
+            if (!animationType) {
                 el.style.animationName = 'still'
                 return
             }
 
-            el.style.animationName = animation
+            el.style.animationName = animationType
             return
         }
     

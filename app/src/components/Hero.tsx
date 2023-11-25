@@ -15,9 +15,9 @@ export class Hero extends Component {
                     <Stack direction="column" gap="20px" alignHorizontalItems="center">
                         <Stack direction="column" gap="5px">
                             <Header className="unveil floatUp" type="title" textAlign="center"><header>Carson Burke</header></Header>
-                            <p>A student at Capilano University persueing a degree in computer science</p>
+                            <p className="unveil floatUp">A student at Capilano University persueing a degree in computer science</p>
                         </Stack>
-                        <Link className="button primaryHighlightBG" to={'/works'}>
+                        <Link className="button primaryHighlightBG unveil floatUp" to={'/works'}>
                             <span className="material-icons-outlined">
                                 receipt_long
                             </span>

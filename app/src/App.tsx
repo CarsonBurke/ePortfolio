@@ -4,7 +4,7 @@ import './styles/main.css'
 import './styles/colors.css'
 import './styles/sizing.css'
 import './styles/interactible.css'
-import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, RouterProvider, Routes, ScrollRestoration, createBrowserRouter, useLocation } from 'react-router-dom';
 import { initLoad } from './scripts/init';
 import { Error } from './pages/Error';
 import { main } from './scripts/main';
@@ -45,6 +45,7 @@ export default class App extends Component<AppArgs> {
   }
 
   render() { 
+
     return (
       <div className="app lightTheme" id='app'>
         <BrowserRouter basename='/'>
@@ -64,13 +65,11 @@ export default class App extends Component<AppArgs> {
                 element={<MyWork setAppState={this.setState} />} 
                 loader={Loader}/>
             <Route 
-                path="/workExample" 
-                element={<Work setAppState={this.setState} title='Title' description='description' category='article' summary='In this article I will discuss the pros and cons of continueing research into fission bombs, specifically in regards to hydrogen bombs, which seems to be where the future (or rather, continuation) of atomic bombs.' />} 
-                loader={Loader}/>
-            <Route 
               path="/work/:id" 
-              element={<Work setAppState={this.setState} title='Title' description='description' category='article' summary='In this article I will discuss the pros and cons of continueing research into fission bombs, specifically in regards to hydrogen bombs, which seems to be where the future (or rather, continuation) of atomic bombs.' />} 
-              loader={Loader}/>
+              element={<Work setAppState={this.setState} />} 
+              loader={Loader}
+              errorElement={<Error errorCode={404} setAppState={this.setState}/>}
+              />
             <Route 
                 path="/testing" 
                 element={<Testing setAppState={this.setState} />} 
@@ -79,6 +78,7 @@ export default class App extends Component<AppArgs> {
             <Route path='*' element={<Error setAppState={this.setState} errorCode={404} />} loader={Loader} />
           </Routes>  
           {this.state.enableFooter && <Footer />}
+          {/* <ScrollRestoration /> */}
         </BrowserRouter>
         {/* <RouterProvider router={customRouter}/> */}
       </div>

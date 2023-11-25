@@ -38,15 +38,15 @@ section {
 .lightTheme {
     --primaryBG: hsl(0, 0%, 100%);
     --secondaryBG: hsl(0, 0%, 90%);
-    --tertiaryBG: hsl(0, 0%, 80%);
+    --tertiaryBG: hsl(212, 100%, 96%);
     --primaryText: black;
     --secondaryText: white;
 }
 
 .darkTheme {
-    --primaryBG: hsl(0, 0%, 10%);
-    --secondaryBG: hsl(0, 0%, 15%);
-    --tertiaryBG: hsl(0, 0%, 24%);
+    --primaryBG: rgb(25, 26, 27);
+    --secondaryBG: rgb(39, 41, 43);
+    --tertiaryBG: rgb(31, 32, 33);
     --primaryText: black;
     --secondaryText: white;
 }

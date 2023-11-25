@@ -17,10 +17,10 @@ export class Footer extends Component {
                             <Header type="h2"><h1>{title}</h1></Header>
                         </Stack>
                         <Stack gap="15px" alignVerticalItems="center">
-                            <Header type="h6"><Link className="footerLink defaultTransition" to='/'>Home</Link></Header>
-                            <Header type="h6"><Link className="footerLink defaultTransition" to='/About'>About</Link></Header>
-                            <Header type="h6"><Link className="footerLink defaultTransition" to='/Works'>My Work</Link></Header>
-                            <button className='button primaryHighlightBG whiteText' onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>Top</button>
+                            <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/'>Home</Link></Header>
+                            <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/About'>About</Link></Header>
+                            <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/Works'>My Work</Link></Header>
+                            <button className='button primaryHighlightBG whiteText unveil floatUp' onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>Top</button>
                         </Stack>
                     </Stack>
                 </section>
