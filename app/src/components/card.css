@@ -1,0 +1,18 @@
+.cardParent {
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 12px 0;
+    border-radius: var(--defaultBorderRadius);
+    transition: all var(--defaultTransitionTime);
+    border: 3px solid var(--secondaryBG);
+}
+
+.cardParent:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 8px 30px 0;
+    border-color: var(--primaryHighlight);
+}
+
+.cardImage {
+    max-width: 80%;
+    border-radius: var(--defaultBorderRadius);
+    aspect-ratio: 1/1;
+}

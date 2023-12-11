@@ -9,10 +9,10 @@ export class Hero extends Component {
 
     render() {
         return (
-            <section className="heroContainer secondaryText parallaxifyBG" style={{backgroundImage: 'url(images/background.jpg)'}}>
+            <section className="heroContainer secondaryText parallaxifyBG" style={{backgroundImage: 'url(images/mountains.jpg)'}}>
                 <Stack className="heroParent" alignHorizontalContent="space-evenly" alignVerticalItems="center">
-                    <img className="heroImage" src='images/logo.png' alt="logo" />
-                    <Stack direction="column" gap="20px" alignHorizontalItems="center">
+                    <img className="heroImage unveil floatUp" src='images/carsonIcon.png' alt="logo" />
+                    <Stack className="heroTextContent" direction="column" gap="20px" alignHorizontalItems="center">
                         <Stack direction="column" gap="5px">
                             <Header className="unveil floatUp" type="title" textAlign="center"><header>Carson Burke</header></Header>
                             <p className="unveil floatUp">A student at Capilano University persueing a degree in computer science</p>

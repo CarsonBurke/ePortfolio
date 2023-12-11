@@ -19,7 +19,9 @@ interface StackArgs {
     alignHorizontalItems?: Property.JustifyItems
     alignVerticalItems?: Property.JustifyItems
     collapseAtWidth?: string
+    wrap?: Property.FlexWrap
     debug?: string
+    style?: CSSProperties
 }
 
 const flexDirectionInverse = {
@@ -32,6 +34,7 @@ export class Stack extends Component<StackArgs> {
     render() {
 
         const style: CSSProperties = {
+            ...this.props.style,
             display: 'flex', 
             flexDirection: this.props.direction,
             gap: this.props.gap, 
@@ -39,6 +42,7 @@ export class Stack extends Component<StackArgs> {
             maxWidth: this.props.maxWidth,
             height: this.props.height,
             maxHeight: this.props.maxHeight,
+            flexWrap: this.props.wrap,
         }
 
         if (this.props.direction === 'column') {

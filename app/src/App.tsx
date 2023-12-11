@@ -78,7 +78,7 @@ export default class App extends Component<AppArgs> {
         errorElement: <Error errorCode={404} setAppState={this.setState} />,
       },
       {
-        path: '/work/:id',
+        path: '/works/:id',
         element: <Work setAppState={this.setState} />,
         loader: Loader,
         errorElement: <Error errorCode={404} setAppState={this.setState} />,
