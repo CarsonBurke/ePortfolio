@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import { Hero } from "../components/Hero";
 import { Stack } from "../components/Stack";
 import { PageSettings } from "../types/pageSettings";
@@ -19,9 +18,9 @@ export class Home extends Component<PageSettings> {
 
 
                         <Stack wrap="wrap" gap="20px" alignHorizontalContent="center">
-                            <Card title="Who I am" to="/about" imageSRC="images/carsonIcon.png" imageAlt="about me"></Card>
+                            <Card title="Who I am" to="/about" imageSRC={require('../images/carsonIcon.png')} imageAlt="about me"></Card>
 
-                            <Card title="My work" to="/works" imageSRC="images/work.jpg" imageAlt="my work"></Card>
+                            <Card title="My work" to="/works" imageSRC={require("../images/work.jpg")} imageAlt="my work"></Card>
                         </Stack>
 
                     </Stack>

@@ -58,7 +58,7 @@ export class Navbar extends Component {
                     <Link to={'/'}>
                         <Stack className="unveil floatDown" alignVerticalItems="center" gap="10px" height="100%">
                         
-                            <img className="navbarIcon" src="images/carsonIcon.png" alt="carson icon"/>
+                            <img className="navbarIcon" src={require('../images/carsonIcon.png')} alt="carson icon"/>
                             {/* <Header type="h3"><h1>{title}</h1></Header> */}
                         </Stack>
                     </Link>

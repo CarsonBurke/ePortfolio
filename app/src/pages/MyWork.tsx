@@ -31,7 +31,7 @@ function generateWorkCards() {
         const work = works[id]
 
         elements.push(
-            <Card title={work.name} to={'/works/' + id} imageSRC="images/english.jpg" imageAlt="about me"></Card>
+            <Card title={work.name} to={'/works/' + id} imageSRC={require("../images/english.jpg")} imageAlt="about me"></Card>
         )
     }
 
