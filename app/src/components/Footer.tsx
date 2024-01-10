@@ -13,7 +13,7 @@ export class Footer extends Component {
                 <section className="container">
                     <Stack alignHorizontalContent="space-around" alignVerticalItems="center">
                         <Stack className="unveil floatUp" alignVerticalItems="center" gap="10px">
-                            <img className="footerIcon" /* src="images/carsonIcon.png" */ alt="carson icon"/>
+                            <img className="footerIcon" src={require("../images/carsonIcon.png")} alt="carson icon"/>
                             <Header type="h2"><h1>{title}</h1></Header>
                         </Stack>
                         <Stack gap="15px" alignVerticalItems="center">

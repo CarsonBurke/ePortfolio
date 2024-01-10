@@ -46,16 +46,19 @@ textarea {
     --tertiaryBG: hsl(212, 100%, 96%);
     --primaryText: black;
     --secondaryText: white;
+    color: var(--primaryText);
+    background-color: var(--primaryBG);
 }
 
 .darkTheme {
     --primaryBG: rgb(25, 26, 27);
     --secondaryBG: rgb(39, 41, 43);
     --tertiaryBG: rgb(31, 32, 33);
-    --primaryText: black;
-    --secondaryText: white;
+    --primaryText: rgb(255, 255, 255);
+    --secondaryText: rgb(0, 0, 0);
+    color: var(--primaryText);
+    background-color: var(--primaryBG);
 }
-
 
 @font-face {
     font-family: "Material Icons";

@@ -4,28 +4,30 @@ import { Stack } from "../components/Stack";
 import { PageSettings } from "../types/pageSettings";
 import { Header } from "../components/text/Header";
 import { Card } from "../components/Card";
+import { Main } from "../components/Main";
 
 export class Home extends Component<PageSettings> {
 
     render() {
 
         return (
-            <main>
-                <Hero />
-                <section>
-                    <Stack direction="column" gap="20px">
-                        <Header className="unveil floatUp" type="h2" textAlign="center"><h1>Check out</h1></Header>
+            <Main navbar={true} footer={true}>
+                <main>
+                    <Hero />
+                    <section>
+                        <Stack direction="column" gap="20px">
+                            <Header className="unveil floatUp" type="h2" textAlign="center"><h1>Check out</h1></Header>
 
+                            <Stack wrap="wrap" gap="20px" alignHorizontalContent="center">
+                                <Card title="Who I am" to="/about" imageSRC={require('../images/carsonIcon.png')} imageAlt="about me"></Card>
 
-                        <Stack wrap="wrap" gap="20px" alignHorizontalContent="center">
-                            <Card title="Who I am" to="/about" imageSRC={require('../images/carsonIcon.png')} imageAlt="about me"></Card>
+                                <Card title="My work" to="/works" imageSRC={require("../images/work.jpg")} imageAlt="my work"></Card>
+                            </Stack>
 
-                            <Card title="My work" to="/works" imageSRC={require("../images/work.jpg")} imageAlt="my work"></Card>
                         </Stack>
-
-                    </Stack>
-                </section>
-            </main>
+                    </section>
+                </main>
+            </Main>
         )
     }
 }

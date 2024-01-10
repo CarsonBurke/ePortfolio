@@ -8,7 +8,7 @@ export class Hero extends Component {
 
     render() {
         return (
-            <section className="heroContainer secondaryText parallaxifyBG" style={{backgroundImage: 'url(' + require('../images/mountains.jpg') + ')'/* 'url(images/mountains.jpg)' */}}>
+            <section className="heroContainer whiteText parallaxifyBG" style={{backgroundImage: 'url(' + require('../images/mountains.jpg') + ')'/* 'url(images/mountains.jpg)' */}}>
                 <Stack className="heroParent" alignHorizontalContent="space-evenly" alignVerticalItems="center">
                     <img className="heroImage unveil floatUp" src={require('../images/carsonIcon.png')} alt="logo" />
                     <Stack className="heroTextContent" direction="column" gap="20px" alignHorizontalItems="center">
