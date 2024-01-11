@@ -2,7 +2,6 @@ import './unveiler.css'
 
 type AnimationTypes = 'floatUp' | 'floatDown' | 'floatLeft' | 'floatRight'
 
-
 class Unveiler {
 
     animations = {
@@ -26,7 +25,6 @@ class Unveiler {
     
     init() {
 
-        window.addEventListener('load', () => this.animateElements())
         window.addEventListener('scroll', () => this.animateElements())
         window.addEventListener('resize', () => this.animateElements())
     }
@@ -115,11 +113,11 @@ class Unveiler {
         }
  */
         if (overflowTop > elMinTop) {
-            console.log('on', elMinTop, overflowTop)
+            /* console.log('on', elMinTop, overflowTop) */
 
             el.classList.add("unveilShow")
 
-            console.log(animationType)
+            /* console.log(animationType) */
             if (!animationType) {
                 el.style.animationName = 'still'
                 return

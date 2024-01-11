@@ -4,19 +4,8 @@ import "./styles/main.css";
 import "./styles/colors.css";
 import "./styles/sizing.css";
 import "./styles/interactible.css";
-import {
-  BrowserRouter,
-  Route,
-  RouterProps,
-  RouterProvider,
-  Routes,
-  ScrollRestoration,
-  createBrowserRouter,
-  useLocation,
-} from "react-router-dom";
-import { initLoad } from "./scripts/init";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Error } from "./pages/Error";
-import { main } from "./scripts/main";
 import { About } from "./pages/About";
 import { Navbar } from "./components/Navbar";
 import { Loader } from "./components/Loader";
@@ -24,139 +13,180 @@ import { Footer } from "./components/Footer";
 import { Testing } from "./pages/Testing";
 import { MyWork } from "./pages/MyWork";
 import { Work } from "./pages/Work";
-import { Router } from "react-router-dom";
+import { PagesWrapper } from "./components/PagesWrapper";
+import { defaultAppState } from "./scripts/appState";
+import { main } from "./scripts/main";
+import { appLoad } from "./scripts/init";
 
 main();
+window.addEventListener("load", (event) => appLoad(event));
 
-interface AppState {
+export interface AppState {
   enableNavbar: boolean;
   enableFooter: boolean;
 }
 
-interface AppArgs {}
+export interface AppArgs {}
 
-export default class App extends Component<AppArgs> {
-  state: Readonly<AppState>;
-  customRouter: any;
+export default function App() {
+  const [appState, setAppState] = useState(Object.assign({}, defaultAppState));
 
-  constructor(args: AppArgs) {
-    super(args);
+  const customRouter = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <PagesWrapper appState={appState} setAppState={setAppState} />,
+        children: [
+          {
+            path: "/",
+            element: <Home appState={appState} setAppState={setAppState} />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            element: <Navbar />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "/",
+            element: <Footer />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "about",
+            element: <About appState={appState} setAppState={setAppState} />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "/works",
+            element: <MyWork appState={appState} setAppState={setAppState} />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "/works/:id",
+            element: <Work appState={appState} setAppState={setAppState} />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "/testing",
+            element: <Testing appState={appState} setAppState={setAppState} />,
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+          {
+            path: "*",
+            element: (
+              <Error
+                appState={appState}
+                setAppState={setAppState}
+                errorCode={404}
+              />
+            ),
+            loader: Loader,
+            errorElement: (
+              <Error
+                errorCode={404}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            ),
+          },
+        ],
+      },
+    ],
+    {}
+  );
 
-    this.state = {
-      enableNavbar: true,
-      enableFooter: true,
-    };
-    this.setState = this.setState.bind(this);
+  return (
+    <div className="app lightTheme" id="app">
+      <RouterProvider router={customRouter} />
 
-    this.customRouter = createBrowserRouter(
-      [
-        {
-          path: "/",
-          element: <Home setAppState={this.setState} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "/",
-          element: <ScrollRestoration />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          element: <Navbar />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "/",
-          element: <Footer />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "about",
-          element: <About setAppState={this.setState} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "/works",
-          element: <MyWork setAppState={this.setState} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "/works/:id",
-          element: <Work setAppState={this.setState} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "/testing",
-          element: <Testing setAppState={this.setState} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-        {
-          path: "*",
-          element: <Error setAppState={this.setState} errorCode={404} />,
-          loader: Loader,
-          errorElement: <Error errorCode={404} setAppState={this.setState} />,
-        },
-      ],
-      {}
-    );
-  }
-
-  componentDidMount(): void {
-    initLoad();
-  }
-
-  render() {
-    return (
-      <div className="app lightTheme" id="app">
-        <RouterProvider router={this.customRouter} />
-
-        {/* <BrowserRouter basename="/">
+      {/* <BrowserRouter basename="/">
           <Routes>
             <Route
               path="/"
-              element={<Home setAppState={this.setState} />}
+              element={<Home appState={appState} setAppState={setAppState} />}
               loader={Loader}
             />
             <Route
               path="/about"
-              element={<About setAppState={this.setState} />}
+              element={<About appState={appState} setAppState={setAppState} />}
               loader={Loader}
             />
             <Route
               path="/works"
-              element={<MyWork setAppState={this.setState} />}
+              element={<MyWork appState={appState} setAppState={setAppState} />}
               loader={Loader}
             />
             <Route
               path="/works/:id"
-              element={<Work setAppState={this.setState} />}
+              element={<Work appState={appState} setAppState={setAppState} />}
               loader={Loader}
               errorElement={
-                <Error errorCode={404} setAppState={this.setState} />
+                <Error errorCode={404} appState={appState} setAppState={setAppState} />
               }
             />
             <Route
               path="/testing"
-              element={<Testing setAppState={this.setState} />}
+              element={<Testing appState={appState} setAppState={setAppState} />}
               loader={Loader}
             />
             <Route
               path="*"
-              element={<Error setAppState={this.setState} errorCode={404} />}
+              element={<Error appState={appState} setAppState={setAppState} errorCode={404} />}
               loader={Loader}
             />
           </Routes>
         </BrowserRouter> */}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 /**

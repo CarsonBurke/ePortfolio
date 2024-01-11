@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { PageSettings } from "../types/pageSettings";
 import { Header } from "../components/text/Header";
+import { updateAppState } from "../scripts/appState";
 
 export class Testing extends Component<PageSettings> {
 
@@ -11,6 +12,11 @@ export class Testing extends Component<PageSettings> {
     }
 
     render() {
+        updateAppState(this.props.appState, this.props.setAppState, {
+          enableNavbar: true,
+          enableFooter: true,
+        });
+
         return (
             <main className="topOffsetForNavbar">
                 <section>

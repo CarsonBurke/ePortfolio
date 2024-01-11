@@ -4,6 +4,7 @@ import { Header } from "../components/text/Header";
 import { Stack } from "../components/Stack";
 import { Section } from "../components/Section";
 import { Link } from "react-router-dom";
+import { updateAppState } from "../scripts/appState";
 
 type ErrorCodes = 404
 
@@ -26,6 +27,10 @@ interface ErrorArgs {
 export class Error extends Component<PageSettings & ErrorArgs> {
 
     render() {
+        updateAppState(this.props.appState, this.props.setAppState, {
+          enableNavbar: true,
+          enableFooter: true,
+        });
 
         const errorResponse = errorsByCode[this.props.errorCode]
 

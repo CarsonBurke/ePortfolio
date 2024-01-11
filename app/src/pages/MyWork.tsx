@@ -4,9 +4,15 @@ import { PageSettings } from "../types/pageSettings";
 import { Stack } from "../components/Stack";
 import { works } from "../scripts/works";
 import { Card } from "../components/Card";
+import { updateAppState } from "../scripts/appState";
 
 export class MyWork extends Component<PageSettings> {
     render() {
+        updateAppState(this.props.appState, this.props.setAppState, {
+          enableNavbar: false,
+          enableFooter: true,
+        });
+
         return (
             <main className="topOffsetForNavbar">
                 <section>
@@ -31,8 +37,14 @@ function generateWorkCards() {
         const work = works[id]
 
         elements.push(
-            <Card title={work.name} to={'/works/' + id} imageSRC={require("../images/english.jpg")} imageAlt="about me"></Card>
-        )
+          <Card
+            title={work.name}
+            to={"/works/" + id}
+            imageSRC={require("../images/english.jpg")}
+            imageAlt="about me"
+            key={id}
+          ></Card>
+        );
     }
 
     return elements
