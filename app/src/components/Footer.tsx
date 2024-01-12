@@ -11,12 +11,12 @@ export class Footer extends Component {
         return (
             <footer className="footerContainer secondaryBG">
                 <section className="container">
-                    <Stack alignHorizontalContent="space-around" alignVerticalItems="center">
+                    <Stack alignHorizontalContent="space-around" alignVerticalItems="center" wrap="wrap">
                         <Stack className="unveil floatUp" alignVerticalItems="center" gap="10px">
                             <img className="footerIcon" src={require("../images/carsonIcon.png")} alt="carson icon"/>
                             <Header type="h2"><h1>{title}</h1></Header>
                         </Stack>
-                        <Stack gap="15px" alignVerticalItems="center">
+                        <Stack gap="15px" alignVerticalItems="center" wrap="wrap" alignHorizontalContent="center">
                             <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/'>Home</Link></Header>
                             <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/About'>About</Link></Header>
                             <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/Works'>My Work</Link></Header>
