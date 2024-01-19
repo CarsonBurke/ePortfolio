@@ -11,10 +11,10 @@ export class Footer extends Component {
         return (
             <footer className="footerContainer secondaryBG">
                 <section className="container">
-                    <Stack alignHorizontalContent="space-around" alignVerticalItems="center" wrap="wrap">
-                        <Stack className="unveil floatUp" alignVerticalItems="center" gap="10px">
+                    <Stack alignHorizontalContent="space-around" alignVerticalItems="center" wrap="wrap" gap="20px">
+                        <Stack className="unveil floatUp" alignVerticalItems="center" gap="10px" wrap="wrap" alignHorizontalContent="center">
                             <img className="footerIcon" src={require("../images/carsonIcon.png")} alt="carson icon"/>
-                            <Header type="h2"><h1>{title}</h1></Header>
+                            <Header type="h2" textAlign="center"><h1>{title}</h1></Header>
                         </Stack>
                         <Stack gap="15px" alignVerticalItems="center" wrap="wrap" alignHorizontalContent="center">
                             <Header className="unveil floatUp" type="h6"><Link className="footerLink defaultTransition" to='/'>Home</Link></Header>
