@@ -39,7 +39,7 @@ export default function App() {
         children: [
           {
             path: "/",
-            element: <Home appState={appState} setAppState={setAppState} />,
+            element: <Home /* appState={appState} setAppState={setAppState} */ />,
             loader: Loader,
             errorElement: (
               <Error

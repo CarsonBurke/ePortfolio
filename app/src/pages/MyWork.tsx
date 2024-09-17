@@ -8,10 +8,6 @@ import { updateAppState } from "../scripts/appState";
 
 export class MyWork extends Component<PageSettings> {
     render() {
-        updateAppState(this.props.appState, this.props.setAppState, {
-          enableNavbar: false,
-          enableFooter: true,
-        });
 
         return (
             <main className="topOffsetForNavbar">
@@ -40,7 +36,7 @@ function generateWorkCards() {
           <Card
             title={work.name}
             to={"/works/" + id}
-            imageSRC={require("../images/english.jpg")}
+            imageSRC={"images/english.jpg"}
             imageAlt="about me"
             key={id}
           ></Card>

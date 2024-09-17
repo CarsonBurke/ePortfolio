@@ -2,7 +2,7 @@ import { Component } from 'react'
 import './card.css'
 import { Stack } from './Stack'
 import { Header } from './text/Header'
-import { Link } from 'react-router-dom'
+import { Link } from '@tanstack/react-router'
 
 interface CardArgs {
     title: string

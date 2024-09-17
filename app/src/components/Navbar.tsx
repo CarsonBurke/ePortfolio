@@ -1,10 +1,10 @@
 import { type } from "os"
-import { Link, NavLink } from "react-router-dom"
 import { Stack } from "./Stack"
 import { Component } from "react"
 import './navbar.css'
 import { title } from "../scripts/config"
 import { Header } from "./text/Header"
+import { Link } from "@tanstack/react-router"
 
 interface NavbarLink {
     type: 'text' | 'button' | 'coloredButton'
@@ -21,12 +21,12 @@ const navbarLinks: NavbarLink[] = [
     {
         type: 'text',
         text: 'About Me',
-        to: '/About',
+        to: '/',
     },
     {
         type: 'text',
         text: 'My Work',
-        to: '/Works',
+        to: '/works',
     },
 ]
 /* <Header key={i} type="h6" className={'navbarLink'}><NavLink key={i} to={link.to}>{link.text}</NavLink></Header> */
@@ -42,7 +42,7 @@ export class Navbar extends Component {
 
             elements.push(
                 
-                <NavLink className='' key={i} to={link.to}><Header key={i} type="h6" className='navbarLink unveil floatDown'>{link.text}</Header></NavLink>
+                <Link className='' key={i} to={link.to}><Header key={i} type="h6" className='navbarLink unveil floatDown'>{link.text}</Header></Link>
             )
         }
 
@@ -58,7 +58,7 @@ export class Navbar extends Component {
                     <Link to={'/'}>
                         <Stack className="unveil floatDown" alignVerticalItems="center" gap="10px" height="100%">
                         
-                            <img className="navbarIcon" src={require('../images/carsonIcon.png')} alt="carson icon"/>
+                            <img className="navbarIcon" src={'images/carsonIcon.png'} alt="carson icon"/>
                             {/* <Header type="h3"><h1>{title}</h1></Header> */}
                         </Stack>
                     </Link>

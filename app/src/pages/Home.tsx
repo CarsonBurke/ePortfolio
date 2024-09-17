@@ -6,40 +6,38 @@ import { Header } from "../components/text/Header";
 import { Card } from "../components/Card";
 import { updateAppState } from "../scripts/appState";
 
-export class Home extends Component<PageSettings> {
-  render() {
-    updateAppState(this.props.appState, this.props.setAppState, {
+export function Home() {
+  /* updateAppState(this.props.appState, this.props.setAppState, {
       enableNavbar: true,
       enableFooter: true,
-    });
+    }); */
 
-    return (
-      <main>
-        <Hero />
-        <section>
-          <Stack direction="column" gap="20px">
-            <Header className="unveil floatUp" type="h2" textAlign="center">
-              <h1>Check out</h1>
-            </Header>
+  return (
+    <main>
+      <Hero />
+      <section>
+        <Stack direction="column" gap="20px">
+          <Header className="unveil floatUp" type="h2" textAlign="center">
+            <h1>Check out</h1>
+          </Header>
 
-            <Stack wrap="wrap" gap="20px" alignHorizontalContent="center">
-              <Card
-                title="Who I am"
-                to="/about"
-                imageSRC={require("../images/carsonIcon.png")}
-                imageAlt="about me"
-              ></Card>
+          <Stack wrap="wrap" gap="20px" alignHorizontalContent="center">
+            <Card
+              title="Who I am"
+              to="/about"
+              imageSRC={"images/carsonIcon.png"}
+              imageAlt="about me"
+            ></Card>
 
-              <Card
-                title="My work"
-                to="/works"
-                imageSRC={require("../images/work.jpg")}
-                imageAlt="my work"
-              ></Card>
-            </Stack>
+            <Card
+              title="My work"
+              to="/works"
+              imageSRC={"images/work.jpg"}
+              imageAlt="my work"
+            ></Card>
           </Stack>
-        </section>
-      </main>
-    );
-  }
+        </Stack>
+      </section>
+    </main>
+  );
 }

@@ -8,16 +8,12 @@ import { Error } from "./Error";
 import { updateAppState } from "../scripts/appState";
 
 export function Work(props: PageSettings) {
-    updateAppState(props.appState, props.setAppState, {
-      enableNavbar: true,
-      enableFooter: true,
-    });
 
-    const params = useParams<{id: string}>()
-
-    const work = works[params.id]
+    const params = useParams<{workId: string}>()
+  console.log('params', params)
+    const work = works[params.workId]
     if (work === undefined) return /* <Error {...props} errorCode={404} /> */ undefined
-
+  console.log("rendering")
     return (
       <main className="topOffsetForNavbar">
         <section>
@@ -40,7 +36,7 @@ export function Work(props: PageSettings) {
                   borderRadius: "var(--defaultBorderRadius)",
                 }}
               >
-                <p>id: {params.id}</p>
+                <p>id: {params.workId}</p>
                 <p>category: {work.category}</p>
                 {/* <p>{work.description}</p> */}
               </Stack>
